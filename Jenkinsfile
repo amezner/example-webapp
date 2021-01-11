@@ -21,7 +21,7 @@ pipeline {
 
 		stage('Make a Builder Image') {
 			steps {
-				echo 'Starting to build the project builer docker image'
+				echo 'Starting to build the project builer Docker Image'
 				script {
 					builderImage = docker.build("${ACCOUNT_REGISTRY_PREFIX}/example-webapp-builder:${GIT_COMMIT_HASH}", "-f ./Dockerfile.builder .")
 					builderImage.push()
@@ -52,7 +52,7 @@ pipeline {
 		
 		stage('Build Production Image') {
 			steps {
-				echo 'Starting to build docker image'
+				echo 'Starting to build Docker Image'
 				script {
 					productionImage = docker.build("${ACCOUNT_REGISTRY_PREFIX}/example-webapp:${GIT_COMMIT_HASH}", "-f ./Dockerfile.builder .")
 					productionImage.push()
